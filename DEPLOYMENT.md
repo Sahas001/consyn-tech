@@ -40,9 +40,20 @@ consyn-tech/
 
 ### Deployment to consyn.tech
 
-#### Option 1: Static Hosting Services
+#### GitHub Pages (automated)
+1. Push to `main` — the workflow in `.github/workflows/deploy.yml` builds and deploys via GitHub Actions.
+2. In repository Settings → Pages, set **Source** to **GitHub Actions** and add `consyn.tech` as the custom domain (HTTPS will be enforced).
+3. DNS records to add at your registrar:
+   - `A` 185.199.108.153
+   - `A` 185.199.109.153
+   - `A` 185.199.110.153
+   - `A` 185.199.111.153
+   - Optional: `CNAME` for `www` → `Sahas001.github.io`
+4. The `CNAME` file in the repo keeps the domain configured on every deploy.
 
-**Vercel (Recommended)**
+#### Other Hosting Services
+
+**Vercel**
 ```bash
 npm i -g vercel
 vercel
@@ -52,11 +63,6 @@ vercel
 ```bash
 npm i -g netlify-cli
 netlify deploy --prod --dir=.
-```
-
-**GitHub Pages**
-```bash
-# Push to your repository and enable GitHub Pages in settings
 ```
 
 #### Option 2: Traditional Web Hosting
