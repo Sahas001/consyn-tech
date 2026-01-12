@@ -10,19 +10,17 @@
    ```
 
 2. **Enable GitHub Pages**
-   - Go to your repository settings: `https://github.com/Sahas001/consyn-tech/settings`
-   - Scroll to "Pages" section
-   - Under "Source", select `Deploy from a branch`
-   - Select branch: `main` and folder: `/ (root)`
-   - Click Save
+   - Go to repository settings: `https://github.com/Sahas001/consyn-tech/settings/pages`
+   - Under **Build and deployment → Source**, choose **GitHub Actions**
+   - Save (the provided workflow in `.github/workflows/deploy.yml` will handle deployments)
 
 3. **Configure Custom Domain**
    - In the same Pages settings, under "Custom domain", enter: `consyn.tech`
-   - GitHub will automatically enforce HTTPS
+   - Save and allow GitHub to enforce HTTPS
 
 4. **Update DNS Records**
    
-   Add these DNS records with your domain registrar:
+   Add these DNS records with your domain registrar (apex + www):
 
    **Option A: Using A records (Recommended)**
    ```
@@ -32,14 +30,9 @@
    A       185.199.111.153
    ```
 
-   **Option B: Using CNAME record**
+   **Option B: Using CNAME record for www**
    ```
-   CNAME   www.consyn.tech    Sahas001.github.io
-   ```
-
-   Also add:
-   ```
-   A       185.199.108.153    (for apex domain)
+   CNAME   www    Sahas001.github.io
    ```
 
 5. **Wait for DNS Propagation**
