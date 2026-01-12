@@ -39,14 +39,26 @@ document.querySelectorAll('.feature-card, .testimonial-card, .pricing-card, .ste
 let lastScrollTop = 0;
 const navbar = document.querySelector('.navbar');
 
+// Create scroll indicator
+const scrollIndicator = document.createElement('div');
+scrollIndicator.className = 'scroll-indicator';
+document.body.appendChild(scrollIndicator);
+
 window.addEventListener('scroll', function() {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
+    // Update navbar shadow
     if (scrollTop > 50) {
         navbar.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.08)';
     } else {
         navbar.style.boxShadow = 'none';
     }
+    
+    // Update scroll indicator
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    scrollIndicator.style.width = scrolled + '%';
     
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
 });
