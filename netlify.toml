@@ -1,0 +1,10 @@
+[build]
+  publish = "."
+
+[context.production]
+  command = "echo 'Static site ready to deploy'"
+
+[[redirects]]
+  from = "/*"
+  to = "/"
+  status = 200
