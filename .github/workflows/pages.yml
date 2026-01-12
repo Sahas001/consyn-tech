@@ -23,7 +23,11 @@ jobs:
       - name: Prepare site files
         run: |
           mkdir -p public
-          cp index.html styles.css script.js CNAME public/
+          for file in index.html styles.css script.js CNAME; do
+            if [ -f "$file" ]; then
+              cp "$file" public/
+            fi
+          done
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
